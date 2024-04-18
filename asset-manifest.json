@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Rental_Car_Front_End/static/css/main.7acaea2f.css",
+    "main.js": "/Rental_Car_Front_End/static/js/main.07d3183d.js",
+    "index.html": "/Rental_Car_Front_End/index.html",
+    "main.7acaea2f.css.map": "/Rental_Car_Front_End/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/Rental_Car_Front_End/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
