@@ -11,15 +11,20 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
+   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #101828;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px
+  font-style: normal;
+  line-height: 24px; 
+  background: #FFF;
 }
 
 code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 

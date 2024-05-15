@@ -13,22 +13,21 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   align-items: center;
-   justify-content: end;
+  justify-content: end;
   gap: 20px;
   padding: 20px 8px;
   margin-bottom: 40px;
-  border-bottom: 1px solid orange;
-  
+  border-bottom: 1px solid #e44848;
 `;
 
 export const Linknavigation = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
-  color: orange;
+  color: #e44848;
   font-weight: 500;
 
   &.active {
     color: white;
-    background-color: orange;
+    background-color: #e44848;;
   }
 `;
