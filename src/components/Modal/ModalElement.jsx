@@ -11,9 +11,9 @@ import { toggleShowReviews } from "../../redux/reducerModal";
 
 export const ModalElement = ({ adId }) => {
     const dispatch = useDispatch();
-    const { isLoading, error, details} = useSelector(selectDetails);
+    const { isLoading, error, details } = useSelector(selectDetails);
     const isModalOpen = useSelector(selectIsModalOpen);
-    
+
 
     const handleClose = () => {
         dispatch(closeModal());
