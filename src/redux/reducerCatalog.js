@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handlePending } from 'helpers/helpers';
 import { handleRejected } from 'helpers/helpers';
 
+
 axios.defaults.baseURL = 'https://66277c47b625bf088c0881db.mockapi.io/adverts';
 
 export const fetchCatalogApi = createAsyncThunk(
@@ -18,10 +19,9 @@ export const fetchCatalogApi = createAsyncThunk(
           page: page,
         },
       });
-      // console.log(response.data);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.massage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -32,8 +32,9 @@ export const catalogSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    currentPage: 1,
   },
-
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchCatalogApi.pending, handlePending)
@@ -41,9 +42,16 @@ export const catalogSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        state.items = [...state.items, ...action.payload];
+        if (action.meta.arg === 1) {
+          state.items = action.payload;
+        } else {
+          state.items = [...state.items, ...action.payload];
+        }
+
+        state.currentPage = action.meta.arg;
       })
       .addCase(fetchCatalogApi.rejected, handleRejected);
+    
   },
 });
 

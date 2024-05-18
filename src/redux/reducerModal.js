@@ -11,13 +11,14 @@ export const fetchModal = createAsyncThunk(
   async (_id, thunkAPI) => {
     try {
       const response = await axios.get(`/adverts/${_id}`);
-      // console.log(response.data);
+      console.log(response.data)
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.massage);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 
 export const ModalSlice = createSlice({
   name: 'modal',
@@ -26,13 +27,18 @@ export const ModalSlice = createSlice({
     details: [],
     isLoading: false,
     error: null,
+    showReviews: false,
   },
   reducers: {
     closeModal: state => {
       state.isModalOpen = false;
+      state.showReviews = false;
     },
     openModal: state => {
       state.isModalOpen = true;
+    },
+    toggleShowReviews: state => {
+      state.showReviews = !state.showReviews;
     },
   },
   extraReducers: builder => {
@@ -48,5 +54,9 @@ export const ModalSlice = createSlice({
   },
 });
 
-export const { closeModal, openModal } = ModalSlice.actions;
+export const { closeModal, openModal, toggleShowReviews } = ModalSlice.actions;
 export const modalReducer = ModalSlice.reducer;
+
+
+
+

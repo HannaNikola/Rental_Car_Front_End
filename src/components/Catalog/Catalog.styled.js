@@ -38,7 +38,7 @@ gap: 16px;
 export const ImgElement = styled.img`
   width: 290px;
   height: 310px;
-  max-width: 100%;
+  // width: 100%;
   margin-right: 24px;
 `;
 
@@ -87,3 +87,4 @@ export const TextPrice = styled.p`
   font-weight: 600;
   line-height: 30px;
 `;
+

@@ -13,24 +13,28 @@ import { ModalElement } from "../Modal/ModalElement";
 
 
 export const Catalog = () => {
+
     const dispatch = useDispatch();
+
     const { isLoading, error, items } = useSelector(selectAdverts);
-    const [page, setPage] = useState(1);
+    const [detailsId, setDetailsId] = useState(null);
+    const currentPage = useSelector((state) => state.adverts.currentPage);
+
 
     useEffect(() => {
-        dispatch(fetchCatalogApi(page));
-    }, [dispatch, page]);
+        dispatch(fetchCatalogApi(1));
+    }, [dispatch]);
 
-    const LoadMore = (event) => {
+    const loadMore = (event) => {
         event.preventDefault();
-        setPage(prevPage => prevPage + 1);
-    }
+        dispatch(fetchCatalogApi(currentPage + 1));
+    };
 
-    const handleModalOpen = () => {
-        console.log("show button");
-        dispatch(openModal());
+    const handleModalOpen = (id) => {
+        setDetailsId(id); 
+        dispatch(openModal()); 
     }
-
+    
     return (
         <div>
             {isLoading && <b>loading adverts...</b>}
@@ -56,17 +60,13 @@ export const Catalog = () => {
                                     {item.location}
                                 </p>
                             </BoxRating>
-                            <ButtonEl onClick={handleModalOpen}>Show more</ButtonEl>
+                            <ButtonEl onClick={() => handleModalOpen(item._id)}>Show more</ButtonEl>
                         </TextBox>
                     </LiElement>
                 ))}
             </Box>
-            <ButtonLoadMore onClick={LoadMore} disabled={isLoading}>Load more</ButtonLoadMore>
-            <ModalElement />
+            <ButtonLoadMore onClick={loadMore} disabled={isLoading}>Load more</ButtonLoadMore>
+            <ModalElement adId={detailsId} />
         </div>
     );
 }
-
-
-
-
