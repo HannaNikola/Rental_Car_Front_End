@@ -31,10 +31,10 @@ export const Catalog = () => {
     };
 
     const handleModalOpen = (id) => {
-        setDetailsId(id); 
-        dispatch(openModal()); 
+        setDetailsId(id);
+        dispatch(openModal());
     }
-    
+
     return (
         <div>
             {isLoading && <b>loading adverts...</b>}

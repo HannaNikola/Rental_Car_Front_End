@@ -29,13 +29,17 @@ export const ModalElement = ({ adId }) => {
         if (isModalOpen && adId) {
             dispatch(fetchModal(adId));
             document.addEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'hidden';
         } else {
             document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'auto';
+
         }
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'auto';
         };
-    }, [isModalOpen, adId, dispatch]);
+    }, [isModalOpen, adId]);
 
     if (!isModalOpen) return null;
 
@@ -47,7 +51,7 @@ export const ModalElement = ({ adId }) => {
 
     const handelReviews = () => {
         dispatch(toggleShowReviews())
-        console.log("pressBaton")
+        
     }
 
     return (
@@ -56,10 +60,13 @@ export const ModalElement = ({ adId }) => {
                 <ButtonClose onClick={handleClose}>X</ButtonClose>
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
-                {details && <DetailsElement details={details} />}
+                {details &&
+                    <DetailsElement details={details} />}
                 <button>Feature</button>
                 <button onClick={handelReviews}>Reviews</button>
             </Content>
+            
         </BackDrop>
     );
+
 }

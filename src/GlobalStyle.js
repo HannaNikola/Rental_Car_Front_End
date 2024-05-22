@@ -21,6 +21,23 @@ body {
   font-style: normal;
   line-height: 24px; 
   background: #FFF;
+  
+
+  ::-webkit-scrollbar {
+  width: 8px; 
+  height: 10px; 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D9D9D9; 
+  border-radius: 7px;
+  position: absolute;
+  left: 46px;
+  top: 174px;
+  margin-right: 30px;
+}
+
 }
 
 code {
@@ -60,3 +77,4 @@ a {
   color:red;
 }
 `;
+

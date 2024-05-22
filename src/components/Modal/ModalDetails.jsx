@@ -5,6 +5,11 @@ import { IoLocationOutline } from "react-icons/io5";
 import { ReviewElement } from "../Review/Review";
 import { selectDetails } from "helpers/selectors";
 
+
+
+
+
+
 export const DetailsElement = ({ details }) => {
 
     const { showReviews } = useSelector(selectDetails);

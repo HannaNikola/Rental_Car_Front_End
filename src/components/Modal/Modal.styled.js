@@ -1,4 +1,4 @@
-// import { Title } from 'pages/HomePage.styled';
+
 import styled from 'styled-components';
 
 export const BackDrop = styled.div`
@@ -7,7 +7,6 @@ export const BackDrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,8 +22,10 @@ export const Content = styled.div`
   align-items: flex-end;
   position: relative;
   min-height: 720px;
-  min-width: 982px;
+  width: 982px;
   max-width: 80%;
+  max-height: 80vh; 
+  overflow-y: auto;
 `;
  
 export const ButtonClose = styled.button`
@@ -81,3 +82,4 @@ line-height: 30px;
 export const DetailsText = styled.p`
   margin-bottom: 44px;
 `;
+

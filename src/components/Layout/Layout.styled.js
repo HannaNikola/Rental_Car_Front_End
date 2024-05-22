@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-
   max-width: 1440px;
   background-color: #fff;
   padding: 20px;
@@ -28,6 +27,6 @@ export const Linknavigation = styled(NavLink)`
 
   &.active {
     color: white;
-    background-color: #e44848;;
+    background-color: #e44848;
   }
 `;
