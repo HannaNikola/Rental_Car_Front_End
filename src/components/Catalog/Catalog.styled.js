@@ -73,7 +73,7 @@ export const Title = styled.h1`
   font-weight: 600;
   line-height: 30px;
   margin-bottom: 13px;
-  
+  margin-right: 248px;
 `;
 
 export const TextReview = styled.p`
@@ -86,5 +86,13 @@ export const TextPrice = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: 30px;
+  margin-right: 11px;
 `;
 
+export const HeartButton = styled.button`
+  display: block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+ 
+`;

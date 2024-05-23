@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducerModal";
-import { useEffect } from "react";
+import { useEffect , useCallback } from "react";
 import { BackDrop, Content, ButtonClose } from "./Modal.styled";
 import { selectIsModalOpen } from "helpers/selectors";
 import { selectDetails } from "helpers/selectors";
 import { fetchModal } from "../../redux/reducerModal";
 import { DetailsElement } from "../Modal/ModalDetails";
 import { toggleShowReviews } from "../../redux/reducerModal";
+import { Svg } from "../Icons/Icons";
 
 
 export const ModalElement = ({ adId }) => {
@@ -15,17 +16,17 @@ export const ModalElement = ({ adId }) => {
     const isModalOpen = useSelector(selectIsModalOpen);
 
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         dispatch(closeModal());
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-            handleClose();
-        }
-    };
+    }, [dispatch]);
 
     useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                handleClose();
+            }
+        };
+
         if (isModalOpen && adId) {
             dispatch(fetchModal(adId));
             document.addEventListener('keydown', handleKeyDown);
@@ -33,13 +34,13 @@ export const ModalElement = ({ adId }) => {
         } else {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'auto';
-
         }
+
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'auto';
         };
-    }, [isModalOpen, adId]);
+    }, [isModalOpen, adId, dispatch, handleClose]);
 
     if (!isModalOpen) return null;
 
@@ -57,7 +58,7 @@ export const ModalElement = ({ adId }) => {
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
             <Content>
-                <ButtonClose onClick={handleClose}>X</ButtonClose>
+                <ButtonClose onClick={handleClose}><Svg id="#icon-closeButton" width={32} height={32}/></ButtonClose>
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
                 {details &&

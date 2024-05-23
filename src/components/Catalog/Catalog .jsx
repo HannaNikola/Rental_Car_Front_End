@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogApi } from '../../redux/reducerCatalog';
 import { IoLocationOutline } from "react-icons/io5";
 import { IoStarSharp } from "react-icons/io5";
-import { LiElement, ImgElement, Box, ButtonEl, TextBox, Title, TextReview, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
+import { LiElement, ImgElement, Box, ButtonEl, TextBox, Title, TextReview, HeartButton, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
 import { openModal } from "../../redux/reducerModal";
 import { selectAdverts } from "helpers/selectors";
 import { ModalElement } from "../Modal/ModalElement";
-
+import { Svg } from "components/Icons/Icons";
 
 
 
@@ -48,7 +48,8 @@ export const Catalog = () => {
                         <TextBox>
                             <BoxNamePrice>
                                 <Title>{item.name}</Title>
-                                <TextPrice>${item.price}<span></span></TextPrice>
+                                <TextPrice>${item.price}</TextPrice>
+                                <HeartButton><Svg id="icon-heart" width={21} height={18} /></HeartButton>
                             </BoxNamePrice>
                             <BoxRating>
                                 <TextReview>
