@@ -6,7 +6,6 @@ export const Container = styled.div`
   background-color: #fff;
   padding: 20px;
   margin: 0 auto;
-  border: 2px solid tomato;
 `;
 
 export const Header = styled.header`
