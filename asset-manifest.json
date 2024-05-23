@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Rental_Car_Front_End/static/css/main.cd2e038f.css",
-    "main.js": "/Rental_Car_Front_End/static/js/main.ad5b54da.js",
+    "main.js": "/Rental_Car_Front_End/static/js/main.8ddb22ab.js",
     "static/js/800.f95eea67.chunk.js": "/Rental_Car_Front_End/static/js/800.f95eea67.chunk.js",
     "static/js/708.f82a7a98.chunk.js": "/Rental_Car_Front_End/static/js/708.f82a7a98.chunk.js",
     "static/js/697.cb82e220.chunk.js": "/Rental_Car_Front_End/static/js/697.cb82e220.chunk.js",
@@ -11,7 +11,7 @@
     "static/media/symbol-defs.svg": "/Rental_Car_Front_End/static/media/symbol-defs.f361063a4013f20a55e1f2d69bf4abaa.svg",
     "index.html": "/Rental_Car_Front_End/index.html",
     "main.cd2e038f.css.map": "/Rental_Car_Front_End/static/css/main.cd2e038f.css.map",
-    "main.ad5b54da.js.map": "/Rental_Car_Front_End/static/js/main.ad5b54da.js.map",
+    "main.8ddb22ab.js.map": "/Rental_Car_Front_End/static/js/main.8ddb22ab.js.map",
     "800.f95eea67.chunk.js.map": "/Rental_Car_Front_End/static/js/800.f95eea67.chunk.js.map",
     "708.f82a7a98.chunk.js.map": "/Rental_Car_Front_End/static/js/708.f82a7a98.chunk.js.map",
     "697.cb82e220.chunk.js.map": "/Rental_Car_Front_End/static/js/697.cb82e220.chunk.js.map",
@@ -20,6 +20,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.ad5b54da.js"
+    "static/js/main.8ddb22ab.js"
   ]
 }
