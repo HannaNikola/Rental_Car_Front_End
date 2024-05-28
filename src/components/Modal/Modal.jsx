@@ -1,24 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducerModal";
-import { useEffect , useCallback } from "react";
-import { BackDrop, Content, ButtonClose } from "./Modal.styled";
+import { useEffect, useCallback, useState } from "react";
+import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews } from "./Modal.styled";
 import { selectIsModalOpen } from "helpers/selectors";
 import { selectDetails } from "helpers/selectors";
 import { fetchModal } from "../../redux/reducerModal";
-import { DetailsElement } from "../Modal/ModalDetails";
-import { toggleShowReviews } from "../../redux/reducerModal";
+import { DetailsElement } from "../ModalDetails/ModalDetails";
 import { Svg } from "../Icons/Icons";
+import { FeatureElement } from '../FeatureElement/FeatureElement';
+import { ReviewElement } from '../Review/Review';
 
-
-export const ModalElement = ({ adId }) => {
+export const Modal = ({ adId }) => {
     const dispatch = useDispatch();
-    const { isLoading, error, details } = useSelector(selectDetails);
+    const { isLoading, error, details} = useSelector(selectDetails);
     const isModalOpen = useSelector(selectIsModalOpen);
 
+    const [isVisibleFeature, setIsVisibleFeature] = useState(false);
+    const [isVisibleReviews, setIsVisibleReviews] = useState(false);
 
     const handleClose = useCallback(() => {
         dispatch(closeModal());
+        
+        
+
     }, [dispatch]);
+
+
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -44,30 +51,39 @@ export const ModalElement = ({ adId }) => {
 
     if (!isModalOpen) return null;
 
+
+
     const handleBackdropClick = (event) => {
         if (event.target.dataset.backdrop) {
             handleClose();
         }
     };
 
-    const handelReviews = () => {
-        dispatch(toggleShowReviews())
-        
+
+    const handleFeaterButtonClick = () => {
+        setIsVisibleFeature(true);
+        setIsVisibleReviews(false);
+    }
+
+    const handleReviewsButtonClick = () => {
+        setIsVisibleFeature(false);
+        setIsVisibleReviews(true);
     }
 
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
             <Content>
-                <ButtonClose onClick={handleClose}><Svg id="#icon-closeButton" width={32} height={32}/></ButtonClose>
+                <ButtonClose onClick={handleClose}><Svg id="#icon-closeButton" width={32} height={32} /></ButtonClose>
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
-                {details &&
-                    <DetailsElement details={details} />}
-                <button>Feature</button>
-                <button onClick={handelReviews}>Reviews</button>
+                {details && <DetailsElement details={details} />}
+                <ButtonContainer>
+                    <ButtonFeaterReviews onClick={handleFeaterButtonClick}>Features</ButtonFeaterReviews>
+                    <ButtonFeaterReviews onClick={handleReviewsButtonClick}>Reviews</ButtonFeaterReviews>
+                    </ButtonContainer>
+                {isVisibleFeature && <FeatureElement reviews={details} />}
+                {isVisibleReviews && <ReviewElement reviews={details?.reviews || []} />}
             </Content>
-            
         </BackDrop>
     );
-
-}
+};

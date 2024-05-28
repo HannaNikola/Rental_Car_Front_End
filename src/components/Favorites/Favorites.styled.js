@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const LiElement = styled.li`
   display: flex;
   padding: 24px;
@@ -31,9 +30,9 @@ export const BoxNamePrice = styled.div`
   width: 526px;
 `;
 export const BoxRating = styled.div`
-display: flex;
-gap: 16px;
-`
+  display: flex;
+  gap: 16px;
+`;
 
 export const ImgElement = styled.img`
   width: 290px;
@@ -41,8 +40,6 @@ export const ImgElement = styled.img`
   // width: 100%;
   margin-right: 24px;
 `;
-
-
 
 export const ButtonEl = styled.button`
   padding: 16px 40px;
@@ -53,7 +50,6 @@ export const ButtonEl = styled.button`
   border: 1px solid #e44848;
   background: #e44848;
   color: white;
-  
 `;
 export const ButtonLoadMore = styled.button`
   display: inline-flex;
@@ -64,9 +60,7 @@ export const ButtonLoadMore = styled.button`
   border-radius: 200px;
   border: 1px solid rgba(71, 84, 103, 0.2);
   margin-top: 50px;
- 
 `;
-
 
 export const Title = styled.h1`
   font-size: 24px;
@@ -89,8 +83,7 @@ export const TextPrice = styled.p`
   margin-right: 11px;
 `;
 
-
 export const BoxSvg = styled.div`
-display: flex;
-align-content: flex-end;
-`
+  display: flex;
+  align-content: flex-end;
+`;

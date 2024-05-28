@@ -1,5 +1,5 @@
-import {useSelector } from "react-redux";
-import {ImgDetails, DetailsText, UlElement, TitleDetails, ReviewDetails, BoxDetails, DetailsPrice } from "./Modal.styled";
+import { useSelector } from "react-redux";
+import { ImgDetails, DetailsText, UlElement, TitleDetails, ReviewDetails, BoxDetails, DetailsPrice } from "./ModalDetais.styled";
 import { IoStarSharp } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { ReviewElement } from "../Review/Review";
@@ -13,7 +13,7 @@ import { selectDetails } from "helpers/selectors";
 export const DetailsElement = ({ details }) => {
 
     const { showReviews } = useSelector(selectDetails);
-    
+
     return (
         <div>
             <div>

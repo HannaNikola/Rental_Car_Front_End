@@ -26,7 +26,6 @@ export const ModalSlice = createSlice({
     details: [],
     isLoading: false,
     error: null,
-    showReviews: false,
   },
   reducers: {
     closeModal: state => {
@@ -35,9 +34,6 @@ export const ModalSlice = createSlice({
     },
     openModal: state => {
       state.isModalOpen = true;
-    },
-    toggleShowReviews: state => {
-      state.showReviews = !state.showReviews;
     },
 
   },
@@ -55,5 +51,5 @@ export const ModalSlice = createSlice({
   },
 });
 
-export const { closeModal, openModal, toggleShowReviews } = ModalSlice.actions;
+export const { closeModal, openModal} = ModalSlice.actions;
 export const modalReducer = ModalSlice.reducer;

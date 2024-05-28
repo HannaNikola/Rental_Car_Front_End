@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogApi } from '../../redux/reducerCatalog';
 import { IoLocationOutline } from "react-icons/io5";
 import { IoStarSharp } from "react-icons/io5";
-import { LiElement, ImgElement, Box, ButtonEl, TextBox, Title, TextReview, HeartButton, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
+import { LiElement, ImgElement, Box, BoxSvg, ButtonEl, TextBox, Title, TextReview, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
 import { openModal } from "../../redux/reducerModal";
-import { selectAdverts } from "helpers/selectors";
-import { ModalElement } from "../Modal/ModalElement";
-import { Svg } from "components/Icons/Icons";
+import { selectAdverts} from "helpers/selectors";
+import { Modal} from "../Modal/Modal";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton"
+
+
 
 
 
@@ -19,9 +21,14 @@ export const Catalog = () => {
     const { isLoading, error, items } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
     const currentPage = useSelector((state) => state.adverts.currentPage);
-
+  
+    
+    
 
     useEffect(() => {
+        // if (currentPage) {
+        //     return;
+        // }
         dispatch(fetchCatalogApi(1));
     }, [dispatch]);
 
@@ -35,6 +42,8 @@ export const Catalog = () => {
         dispatch(openModal());
     }
 
+   
+    
     return (
         <div>
             {isLoading && <b>loading adverts...</b>}
@@ -48,8 +57,10 @@ export const Catalog = () => {
                         <TextBox>
                             <BoxNamePrice>
                                 <Title>{item.name}</Title>
-                                <TextPrice>${item.price}</TextPrice>
-                                <HeartButton><Svg id="icon-heart" width={21} height={18} /></HeartButton>
+                                <BoxSvg>
+                                    <TextPrice>${item.price}</TextPrice>
+                                    <FavoriteButton adId={item._id} />
+                                </BoxSvg>
                             </BoxNamePrice>
                             <BoxRating>
                                 <TextReview>
@@ -67,7 +78,7 @@ export const Catalog = () => {
                 ))}
             </Box>
             <ButtonLoadMore onClick={loadMore} disabled={isLoading}>Load more</ButtonLoadMore>
-            <ModalElement adId={detailsId} />
+            <Modal adId={detailsId} />
         </div>
     );
 }
