@@ -7,8 +7,7 @@ export const BoxFormic = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 445px;
-  min-hight: 484px;
+  width: 448px;
   padding: 24px;
   border-radius: 10px;
   border: 1px solid rgba(16, 24, 40, 0.2);

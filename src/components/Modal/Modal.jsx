@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducerModal";
-import { useEffect, useCallback, useState } from "react";
-import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews } from "./Modal.styled";
+import { useEffect, useCallback, useState, useRef } from "react";
+import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews} from "./Modal.styled";
 import { selectIsModalOpen } from "helpers/selectors";
 import { selectDetails } from "helpers/selectors";
 import { fetchModal } from "../../redux/reducerModal";
@@ -15,8 +15,14 @@ export const Modal = ({ adId }) => {
     const { isLoading, error, details} = useSelector(selectDetails);
     const isModalOpen = useSelector(selectIsModalOpen);
 
+
     const [isVisibleFeature, setIsVisibleFeature] = useState(false);
     const [isVisibleReviews, setIsVisibleReviews] = useState(false);
+
+    const reviewsRef = useRef(null);
+    const featureRef = useRef();
+    
+
 
     const handleClose = useCallback(() => {
         dispatch(closeModal());
@@ -51,8 +57,6 @@ export const Modal = ({ adId }) => {
 
     if (!isModalOpen) return null;
 
-
-
     const handleBackdropClick = (event) => {
         if (event.target.dataset.backdrop) {
             handleClose();
@@ -63,26 +67,46 @@ export const Modal = ({ adId }) => {
     const handleFeaterButtonClick = () => {
         setIsVisibleFeature(true);
         setIsVisibleReviews(false);
+
+
+        setTimeout(() => {
+            if (featureRef.current) {
+                featureRef.current.scrollIntoView({behavior: 'smooth'})
+            }
+        },0)
+
+        
     }
 
     const handleReviewsButtonClick = () => {
         setIsVisibleFeature(false);
         setIsVisibleReviews(true);
+
+        setTimeout(() => {
+            if (reviewsRef.current) {
+                reviewsRef.current.scrollIntoView({behavior: 'smooth'})
+            }
+        },0)
     }
 
+   
+    
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
             <Content>
-                <ButtonClose onClick={handleClose}><Svg id="#icon-closeButton" width={32} height={32} /></ButtonClose>
+                <ButtonClose onClick={handleClose} ><Svg id="#icon-closeButton" width={32} height={32} /></ButtonClose>
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
                 {details && <DetailsElement details={details} />}
+                
                 <ButtonContainer>
-                    <ButtonFeaterReviews onClick={handleFeaterButtonClick}>Features</ButtonFeaterReviews>
-                    <ButtonFeaterReviews onClick={handleReviewsButtonClick}>Reviews</ButtonFeaterReviews>
-                    </ButtonContainer>
-                {isVisibleFeature && <FeatureElement reviews={details} />}
-                {isVisibleReviews && <ReviewElement reviews={details?.reviews || []} />}
+                    <ButtonFeaterReviews $isActive={isVisibleFeature} onClick={handleFeaterButtonClick}>Features</ButtonFeaterReviews>
+                    <ButtonFeaterReviews $isActive={isVisibleReviews} onClick={handleReviewsButtonClick}>Reviews</ButtonFeaterReviews>
+                </ButtonContainer>
+            
+                {isVisibleFeature && <div ref={featureRef}><FeatureElement reviews={details} /></div>}
+                {isVisibleReviews && <div ref={reviewsRef}><ReviewElement  reviews={details?.reviews || []} /></div>}
+                
             </Content>
         </BackDrop>
     );

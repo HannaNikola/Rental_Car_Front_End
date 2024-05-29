@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
 
-
-export const BoxContainer = styled.div`
-  display: flex;
-`;
-
-
-export const BoxReview = styled.ul`
-  display: flex;
-  width: 478px;
-  min-hight: 460px;
+export const UlList = styled.ul`
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  margin-right: 24px;
 `;
+export const ListReviewer = styled.li`
+  margin-bottom: 24px;
+  width: 430px;
+`;
+
+export const UserInfo = styled.div`
+display: flex;
+margin-bottom: 16px;
+`

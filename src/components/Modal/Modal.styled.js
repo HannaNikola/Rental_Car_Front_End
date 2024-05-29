@@ -21,7 +21,6 @@ export const Content = styled.div`
   position: relative;
   min-height: 720px;
   width: 982px;
-  max-width: 80%;
   max-height: 80vh;
   overflow-y: auto;
 `;
@@ -38,18 +37,21 @@ export const Content = styled.div`
 
  export const ButtonContainer = styled.div`
    display: flex;
-  //  justify-content: space-around;
-  gap: 40px;
-   margin-bottom: 20px;
+   gap: 40px;
+   border-bottom: 2px solid rgba(16, 24, 40, 0.2);
  `;
 
 export const ButtonFeaterReviews = styled.button`
   display: block;
   cursor: pointer;
 
-   border-style: hidden;
+  border-style: hidden;
   background: #fff;
 
- 
-  
+  ${({ $isActive }) =>
+    $isActive &&
+    `
+    border-bottom: 2px solid red;
+    color: red;
+  `}
 `;
