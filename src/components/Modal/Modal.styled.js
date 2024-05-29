@@ -15,24 +15,22 @@ export const Content = styled.div`
   background: #fff;
   padding: 40px;
   border-radius: 20px;
-  gap: 24px;
   flex-direction: column;
   align-items: flex-end;
-  position: relative;
   min-height: 720px;
   width: 982px;
   max-height: 80vh;
   overflow-y: auto;
+  position: relative;
 `;
- export const ButtonClose = styled.button`
+export const ButtonClose = styled.button`
+   cursor:pointer;
    position: absolute;
-   top: 10px;
-   right: 10px;
+   top: 40px;
+   right: 40px;
    background: none;
    border: none;
-   font-size: 24px;
-   cursor: pointer;
-   color: black;
+   
  `;
 
  export const ButtonContainer = styled.div`

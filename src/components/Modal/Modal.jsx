@@ -6,9 +6,10 @@ import { selectIsModalOpen } from "helpers/selectors";
 import { selectDetails } from "helpers/selectors";
 import { fetchModal } from "../../redux/reducerModal";
 import { DetailsElement } from "../ModalDetails/ModalDetails";
-import { Svg } from "../Icons/Icons";
+import { IoCloseSharp } from "react-icons/io5";
 import { FeatureElement } from '../FeatureElement/FeatureElement';
 import { ReviewElement } from '../Review/Review';
+import { IconContext } from 'react-icons';
 
 export const Modal = ({ adId }) => {
     const dispatch = useDispatch();
@@ -94,7 +95,9 @@ export const Modal = ({ adId }) => {
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
             <Content>
-                <ButtonClose onClick={handleClose} ><Svg id="#icon-closeButton" width={32} height={32} /></ButtonClose>
+                
+                <ButtonClose onClick={handleClose}><IconContext.Provider value={{ size: "32px" }}><IoCloseSharp />
+                </IconContext.Provider></ButtonClose>
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
                 {details && <DetailsElement details={details} />}

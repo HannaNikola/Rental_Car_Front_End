@@ -38,13 +38,14 @@ export const MessageInput = styled(Field)`
 
 export const ButtonSubmit = styled.button`
   display: block;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0);
   background: #e44848;
-  border-color: #e44848;
-  color: #ffffff;
   border-radius: 200px;
   padding: 16px 60px;
+  color: #ffffff;
 
   &.active {
     color: white;
