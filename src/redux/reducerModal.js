@@ -11,7 +11,7 @@ export const fetchModal = createAsyncThunk(
   async (_id, thunkAPI) => {
     try {
       const response = await axios.get(`/adverts/${_id}`);
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

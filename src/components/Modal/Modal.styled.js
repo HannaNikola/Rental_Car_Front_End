@@ -18,7 +18,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: flex-end;
   min-height: 720px;
-  width: 982px;
+  width: 902px;
   max-height: 80vh;
   overflow-y: auto;
   position: relative;

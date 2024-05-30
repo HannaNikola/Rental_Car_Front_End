@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogApi } from '../../redux/reducerCatalog';
 import { IoLocationOutline } from "react-icons/io5";
 import { IoStarSharp } from "react-icons/io5";
-import { LiElement, ImgElement, Box, BoxSvg, ButtonEl, TextBox, Title, TextReview, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
+import { LiElement, ImgBox, ImgElement, Box, BoxSvg, ButtonEl, TextBox, Title, TextReview, ButtonLoadMore, BoxNamePrice, BoxRating, TextPrice } from '../Catalog/Catalog.styled';
 import { openModal } from "../../redux/reducerModal";
 import { selectAdverts} from "helpers/selectors";
 import { Modal} from "../Modal/Modal";
@@ -26,15 +26,14 @@ export const Catalog = () => {
     
 
     useEffect(() => {
-        // if (currentPage) {
-        //     return;
-        // }
         dispatch(fetchCatalogApi(1));
     }, [dispatch]);
 
     const loadMore = (event) => {
         event.preventDefault();
         dispatch(fetchCatalogApi(currentPage + 1));
+
+        
     };
 
     const handleModalOpen = (id) => {
@@ -51,9 +50,9 @@ export const Catalog = () => {
             <Box>
                 {items.map((item) => (
                     <LiElement key={item._id}>
-                        <div>
+                        <ImgBox>
                             <ImgElement src={item.gallery[0]} alt={item.name} />
-                        </div>
+                        </ImgBox>
                         <TextBox>
                             <BoxNamePrice>
                                 <Title>{item.name}</Title>

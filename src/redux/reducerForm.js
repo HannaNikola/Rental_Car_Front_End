@@ -8,7 +8,7 @@ export const FormSlice = createSlice({
     name: '',
     email: '',
     bookingDate: '',
-    massage: '',
+    message: '',
     submitData: null,
   },
   reducers: {
@@ -18,5 +18,6 @@ export const FormSlice = createSlice({
   },
 });
 
-export const {submitForm , updateFormField} = FormSlice.actions;
+
+export const { submitForm } = FormSlice.actions;
 export const formReducer = FormSlice.reducer;

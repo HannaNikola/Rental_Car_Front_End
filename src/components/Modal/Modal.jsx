@@ -5,7 +5,7 @@ import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews} f
 import { selectIsModalOpen } from "helpers/selectors";
 import { selectDetails } from "helpers/selectors";
 import { fetchModal } from "../../redux/reducerModal";
-import { DetailsElement } from "../ModalDetails/ModalDetails";
+import { DetailsElement } from "../ModalDetails/DetailsElement ";
 import { IoCloseSharp } from "react-icons/io5";
 import { FeatureElement } from '../FeatureElement/FeatureElement';
 import { ReviewElement } from '../Review/Review';

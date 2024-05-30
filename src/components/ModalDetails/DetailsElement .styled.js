@@ -1,17 +1,29 @@
 
 import styled from 'styled-components';
 
-export const ImgDetails = styled.img`
-  width: 290px;
-  height: 310px;
-  width: 100%;
-  border-radius: 10px;
-`;
 export const UlElement = styled.ul`
   display: flex;
-  gap :16px;
   margin-bottom: 24px;
+  gap: 16px;
 `;
+
+export const ImgWrap = styled.li`
+  width: 290px;
+  height: 310px;
+  border-radius: 10px;
+  
+`;
+
+export const ImgDetails = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  
+  
+`;
+
 
 export const TitleDetails = styled.h1`
   font-size: 24px;
