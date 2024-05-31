@@ -21,27 +21,37 @@ export const Catalog = () => {
     const { isLoading, error, items } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
     const currentPage = useSelector((state) => state.adverts.currentPage);
-  
+    const [showMore, setShowMore]= useState(true)
+    
     
     
 
     useEffect(() => {
         dispatch(fetchCatalogApi(1));
+
     }, [dispatch]);
+ 
 
-    const loadMore = (event) => {
+    
+   const loadMore = (event) => {
         event.preventDefault();
-        dispatch(fetchCatalogApi(currentPage + 1));
 
-        
+        if (items.length === 0) {
+
+            setShowMore(false);
+            
+         } 
+         
+        dispatch(fetchCatalogApi(currentPage + 1)); 
     };
+    
 
     const handleModalOpen = (id) => {
         setDetailsId(id);
         dispatch(openModal());
     }
 
-   
+
     
     return (
         <div>
@@ -71,12 +81,14 @@ export const Catalog = () => {
                                     {item.location}
                                 </p>
                             </BoxRating>
+                            
                             <ButtonEl onClick={() => handleModalOpen(item._id)}>Show more</ButtonEl>
                         </TextBox>
                     </LiElement>
                 ))}
             </Box>
-            <ButtonLoadMore onClick={loadMore} disabled={isLoading}>Load more</ButtonLoadMore>
+            {showMore && <ButtonLoadMore onClick={loadMore} disabled={isLoading}>Load more</ButtonLoadMore> }
+            {/* <ButtonLoadMore onClick={loadMore} disabled={isLoading}>Load more</ButtonLoadMore> */}
             <Modal adId={detailsId} />
         </div>
     );

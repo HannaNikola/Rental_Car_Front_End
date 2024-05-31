@@ -6,25 +6,24 @@ import { IconContext } from 'react-icons';
 
 export const FavoriteButton = ({ adId }) => {
     const dispatch = useDispatch();
-
     const favorites = useSelector(state => state.favorite.favorites);
-    
     const isFavorite = favorites.includes(adId);
 
     const handleFavorites = () => {
-        console.log('press');
         if (isFavorite) {
             dispatch(deleteFavorite(adId));
         } else {
             dispatch(addFavorite(adId));
         }
-    }
+    };
+
     return (
         <div>
-            
             <HeartButton onClick={handleFavorites}>
-            <IconContext.Provider value={{size:"24px"}}><FaRegHeart /></IconContext.Provider>
-            </HeartButton> 
-    </div>
-    )
-}
+                <IconContext.Provider value={{ size: "24px" }}>
+                    {isFavorite ? <FaRegHeart color="red" /> : <FaRegHeart />}
+                </IconContext.Provider>
+            </HeartButton>
+        </div>
+    );
+};

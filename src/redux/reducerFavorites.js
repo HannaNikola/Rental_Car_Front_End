@@ -8,10 +8,11 @@ export const favoriteSlice = createSlice({
     },
     reducers: {
         addFavorite(state, action) {
-            state.favorites.push(action.payload);
+         state.favorites.push(action.payload);
+      
         },
         deleteFavorite(state, action) {
-            state.favorites = state.favorites.filter(id => id !== action.payload)
+            state.favorites = state.favorites.filter(_id => _id !== action.payload)
         }
 }
 })
