@@ -1,10 +1,10 @@
-import { Img, Title } from "./HomePage.styled";
-import image from '../images/home-img.jpg';
+import { Home } from "components/Home/Home";
+
 
 const HomePage = () => {
+
     return <div>
-        <Title>Welcome to our page</Title>
-        <Img src={image} alt="" />
+        <Home/>
     </div>
     
 }

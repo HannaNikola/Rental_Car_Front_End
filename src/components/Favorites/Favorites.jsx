@@ -9,16 +9,16 @@ import { openModal } from "../../redux/reducerModal";
 import { Modal } from "../Modal/Modal";
 
 
+
 export const Favorites = () => {
 
-        const dispatch = useDispatch();
-         const [detailsId, setDetailsId] = useState(null);
-         const favorites = useSelector(state => state.favorite.favorites);
-        const { items } = useSelector(selectAdverts);
-   
+    const dispatch = useDispatch();
+    const [detailsId, setDetailsId] = useState(null);
+    const { items } = useSelector(selectAdverts);
+    const favorites = useSelector(state => state.favorite.favorites);
 
     const favoriteItems = items.filter(item => favorites.includes(item._id));
-    console.log("item", favoriteItems);
+    
 
     const handleModalOpen = (id) => {
              setDetailsId(id);

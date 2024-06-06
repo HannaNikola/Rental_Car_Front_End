@@ -14,9 +14,8 @@ import '../../loader.css';
 
    export const Catalog = () => {
     const dispatch = useDispatch();
-    const { isLoading, error, items} = useSelector(selectAdverts);
+    const { isLoading, error, items, currentPage } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
-    const currentPage = useSelector((state) => state.adverts.currentPage);
     const [showMore, setShowMore] = useState(true);
 
        

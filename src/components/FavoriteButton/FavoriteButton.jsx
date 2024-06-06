@@ -5,9 +5,13 @@ import { FaRegHeart } from "react-icons/fa6";
 import { IconContext } from 'react-icons';
 
 
+
+
 export const FavoriteButton = ({ adId }) => {
     const dispatch = useDispatch();
     const favorites = useSelector(state => state.favorite.favorites);
+    
+    
     const isFavorite = favorites.includes(adId);
 
     const handleFavorites = (event) => {
