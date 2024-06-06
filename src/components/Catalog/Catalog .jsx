@@ -32,9 +32,6 @@ import '../../loader.css';
         } else {
             dispatch(fetchCatalogApi(currentPage + 1));
         } 
-
-
-
     };
 
    
