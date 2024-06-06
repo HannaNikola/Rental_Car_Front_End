@@ -1,2 +1,2 @@
 .loader{-webkit-animation:shadowPulse 2s linear infinite;animation:shadowPulse 2s linear infinite;background:#fff;border-radius:50%;box-shadow:-24px 0 #fff,24px 0 #fff;box-sizing:border-box;display:block;height:16px;margin:15px auto;position:relative;width:16px}@-webkit-keyframes shadowPulse{33%{background:#fff;box-shadow:-24px 0 #ff3d00,24px 0 #fff}66%{background:#ff3d00;box-shadow:-24px 0 #fff,24px 0 #fff}to{background:#fff;box-shadow:-24px 0 #fff,24px 0 #ff3d00}}@keyframes shadowPulse{33%{background:#fff;box-shadow:-24px 0 #ff3d00,24px 0 #fff}66%{background:#ff3d00;box-shadow:-24px 0 #fff,24px 0 #fff}to{background:#fff;box-shadow:-24px 0 #fff,24px 0 #ff3d00}}
-/*# sourceMappingURL=338.4d0b0a3a.chunk.css.map*/
+/*# sourceMappingURL=338.812742f4.chunk.css.map*/
