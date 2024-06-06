@@ -10,6 +10,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { FeatureElement } from '../FeatureElement/FeatureElement';
 import { ReviewElement } from '../Review/Review';
 import { IconContext } from 'react-icons';
+import '../../loader.css';
 
 export const Modal = ({ adId }) => {
     const dispatch = useDispatch();
@@ -98,7 +99,9 @@ export const Modal = ({ adId }) => {
                 
                 <ButtonClose onClick={handleClose}><IconContext.Provider value={{ size: "32px" }}><IoCloseSharp />
                 </IconContext.Provider></ButtonClose>
-                {isLoading && <p>Loading...</p>}
+                {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+                    <span className="loader"></span>
+                </div>}
                 {error && <p>Error: {error}</p>}
                 {details && <DetailsElement details={details} />}
                 

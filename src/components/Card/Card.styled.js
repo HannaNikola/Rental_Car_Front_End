@@ -91,3 +91,4 @@ export const BoxSvg = styled.div`
   display: flex;
   align-content: flex-end;
 `;
+
