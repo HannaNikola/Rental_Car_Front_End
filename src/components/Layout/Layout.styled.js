@@ -19,6 +19,8 @@ export const Header = styled.header`
 `;
 
 export const Linknavigation = styled(NavLink)`
+  display:block;
+  cursor:pointer;
   padding: 8px 16px;
   border-radius: 4px;
   color: #e44848;

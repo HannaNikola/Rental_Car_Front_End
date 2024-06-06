@@ -4,12 +4,14 @@ import { deleteFavorite, addFavorite } from "../../redux/reducerFavorites";
 import { FaRegHeart } from "react-icons/fa6";
 import { IconContext } from 'react-icons';
 
+
 export const FavoriteButton = ({ adId }) => {
     const dispatch = useDispatch();
     const favorites = useSelector(state => state.favorite.favorites);
     const isFavorite = favorites.includes(adId);
 
-    const handleFavorites = () => {
+    const handleFavorites = (event) => {
+        event.preventDefault();
         if (isFavorite) {
             dispatch(deleteFavorite(adId));
         } else {
@@ -21,7 +23,7 @@ export const FavoriteButton = ({ adId }) => {
         <div>
             <HeartButton onClick={handleFavorites}>
                 <IconContext.Provider value={{ size: "24px" }}>
-                    {isFavorite ? <FaRegHeart color="red" /> : <FaRegHeart />}
+                    {isFavorite ? <FaRegHeart color="#E44848" /> : <FaRegHeart />}
                 </IconContext.Provider>
             </HeartButton>
         </div>

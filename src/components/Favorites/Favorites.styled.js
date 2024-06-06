@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TitleFavorits = styled.h1`
+export const TitleFavorite= styled.h1`
   font-family: Inter;
   font-size: 24px;
   font-style: normal;

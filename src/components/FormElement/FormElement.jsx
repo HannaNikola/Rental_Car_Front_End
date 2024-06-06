@@ -18,6 +18,7 @@ const BookSchema = Yup.object().shape({
     
 
 });
+ 
 
 
 
@@ -103,7 +104,7 @@ export const FormElement = () => {
                         <Field name="bookingDate" component={DatePickerField} />
 
                             <label htmlFor="message"></label>
-                        <MessageInput id="message" name="message" placeholder="Enter your message"/>
+                        <MessageInput  name="message" placeholder="Enter your message"/>
                             <ButtonSubmit type="submit">Send</ButtonSubmit >
                             
                         </Form>
