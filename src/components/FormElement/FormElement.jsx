@@ -10,11 +10,12 @@ import { CiCalendar } from "react-icons/ci";
 import { useEffect } from 'react';
 
 const BookSchema = Yup.object().shape({
-    name: Yup.string().min(3, 'Too short!')
-            .max(50, 'Too Long!')
-            .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    name: Yup.string().min(3, 'Name is too short!')
+            .max(20, 'Name is too Long!')
+        .required('Please enter your name'),
+    email: Yup.string().email('Not correct email').required('Please enter your email'),
     message: Yup.string(),
+    bookingDate: Yup.date().required('Please select a booking date'),
     
 
 });
@@ -41,6 +42,7 @@ const DatePickerField = ({ field, form }) => {
                 onChange={handleChange}
                 dateFormat="MMMM d, yyyy"
                 placeholderText="Booking date"
+                minDate={new Date()}
             />
             <CiCalendar style={{
                 position: 'absolute',
@@ -102,6 +104,7 @@ export const FormElement = () => {
                             <ErrorMessage name="email" />
                         <label htmlFor="bookingDate"></label>
                         <Field name="bookingDate" component={DatePickerField} />
+                        <ErrorMessage name="bookingDate" />
 
                             <label htmlFor="message"></label>
                         <MessageInput  name="message" placeholder="Enter your message"/>
