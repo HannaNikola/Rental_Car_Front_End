@@ -14,7 +14,7 @@ export const Catalog = () => {
     const dispatch = useDispatch();
     const { isLoading, error, items, currentPage } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
-    const [showMore, setShowMore] = useState(true);
+    // const [showMore, setShowMore] = useState(true);
 
 
     useEffect(() => {
@@ -26,9 +26,10 @@ export const Catalog = () => {
         event.preventDefault();
 
         if (items.length < currentPage * 4) {
-            setShowMore(false)
+            // setShowMore(false)
         } else {
             dispatch(fetchCatalogApi(currentPage + 1));
+            
         }
     };
 
