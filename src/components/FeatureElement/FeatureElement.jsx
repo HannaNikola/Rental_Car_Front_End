@@ -1,11 +1,10 @@
 import { FormElement } from 'components/FormElement/FormElement';
 import { BoxContainer, BoxFeature, BoxContent, TitleFeature, BoxItems, List, ListSpan } from '../FeatureElement/FeatureElement.styled';
-import { selectDetails } from "helpers/selectors";
-import {useSelector} from "react-redux";
 
 
-export const FeatureElement = () => {
-    const {  details } = useSelector(selectDetails);
+
+export const FeatureElement = ({details}) => {
+   
     return (
         <BoxContainer>
             <BoxContent>

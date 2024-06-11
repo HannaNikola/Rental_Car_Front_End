@@ -14,12 +14,14 @@ import {
 import { IoStarSharp } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
+import { ButtonShowMore } from '../ButtonShowMore/ButtonShowMore';
 
+export const Card = ({ item, onShowMore }) => {
 
-export const Card = ({ item, children }) => {
     const formatPrice = (price) => {
         return new Intl.NumberFormat('uk-UA', { minimumFractionDigits: 2 }).format(price).replace(/\s/g, '');;
     }
+    
     return (
         <LiElement key={item._id}>
             <ImgBox>
@@ -52,7 +54,8 @@ export const Card = ({ item, children }) => {
                         {item.location}
                     </p>
                 </BoxRating>
-                {children}
+                <ButtonShowMore itemId={item._id} onClick={() => onShowMore(item._id) } />
+                
             </TextBox>
         </LiElement>
     );
@@ -60,5 +63,3 @@ export const Card = ({ item, children }) => {
 
 
 
-
-   

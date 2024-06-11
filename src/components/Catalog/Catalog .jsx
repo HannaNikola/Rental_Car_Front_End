@@ -7,40 +7,39 @@ import { openModal } from "../../redux/reducerModal";
 import { selectAdverts} from "helpers/selectors";
 import { Modal} from "../Modal/Modal";
 import { Card } from "components/Card/Card";
-import { ButtonShowMore } from '../ButtonShowMore/ButtonShowMore'
 import '../../loader.css';
-
-
-
-   export const Catalog = () => {
+    
+        
+export const Catalog = () => {
     const dispatch = useDispatch();
     const { isLoading, error, items, currentPage } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
     const [showMore, setShowMore] = useState(true);
 
-       
+
     useEffect(() => {
         dispatch(fetchCatalogApi(1));
     }, [dispatch]);
 
-       
+
     const loadMore = (event) => {
         event.preventDefault();
-        
-        if (items.length === 0) {
+
+        if (items.length < currentPage * 4) {
             setShowMore(false)
         } else {
             dispatch(fetchCatalogApi(currentPage + 1));
-        } 
+        }
     };
 
-   
+
     const handleModalOpen = (id) => {
         setDetailsId(id);
+        
         dispatch(openModal());
-       };
-       
+    };
 
+    
     return (
         <div>
             {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
@@ -49,20 +48,14 @@ import '../../loader.css';
             {error && <b>{error}</b>}
             <Box>
                 {items.map((item) => (
-                    <Card key={item._id} item={item} >
-                        <ButtonShowMore itemId={item._id} onClick={handleModalOpen} />
-                    </Card>
+                    <Card key={item._id} item={item} onShowMore={handleModalOpen} />
                 ))}
             </Box>
-            {showMore && (
+            
                 <ButtonLoadMore onClick={loadMore} disabled={isLoading}>
                     Load more
                 </ButtonLoadMore>
-            )}
-            <Modal adId={detailsId} />
+            {detailsId && <Modal adId={detailsId} />}
         </div>
     );
 };
-
-
-

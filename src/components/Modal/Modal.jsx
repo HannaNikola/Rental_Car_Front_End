@@ -3,18 +3,20 @@ import { closeModal } from "../../redux/reducerModal";
 import { useEffect, useCallback, useState, useRef } from "react";
 import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews} from "./Modal.styled";
 import { selectIsModalOpen } from "helpers/selectors";
-import { selectDetails } from "helpers/selectors";
-import { fetchModal } from "../../redux/reducerModal";
 import { DetailsElement } from "../ModalDetails/DetailsElement ";
 import { IoCloseSharp } from "react-icons/io5";
 import { FeatureElement } from '../FeatureElement/FeatureElement';
 import { ReviewElement } from '../Review/Review';
 import { IconContext } from 'react-icons';
 import '../../loader.css';
+import { selectAdverts } from "helpers/selectors";
+
+
 
 export const Modal = ({ adId }) => {
     const dispatch = useDispatch();
-    const { isLoading, error, details} = useSelector(selectDetails);
+    const { isLoading, error} = useSelector(selectAdverts);
+    const item = useSelector(state => state.adverts.items.find(item => item._id === adId));
     const isModalOpen = useSelector(selectIsModalOpen);
 
 
@@ -23,13 +25,13 @@ export const Modal = ({ adId }) => {
 
     const reviewsRef = useRef(null);
     const featureRef = useRef();
-    
+
 
 
     const handleClose = useCallback(() => {
         dispatch(closeModal());
-        
-        
+
+
 
     }, [dispatch]);
 
@@ -42,8 +44,7 @@ export const Modal = ({ adId }) => {
             }
         };
 
-        if (isModalOpen && adId) {
-            dispatch(fetchModal(adId));
+        if (isModalOpen) {
             document.addEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'hidden';
         } else {
@@ -55,9 +56,11 @@ export const Modal = ({ adId }) => {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'auto';
         };
-    }, [isModalOpen, adId, dispatch, handleClose]);
+    }, [isModalOpen, handleClose]);
 
-    if (!isModalOpen) return null;
+
+
+    if (!isModalOpen || !item) return null;
 
     const handleBackdropClick = (event) => {
         if (event.target.dataset.backdrop) {
@@ -73,11 +76,11 @@ export const Modal = ({ adId }) => {
 
         setTimeout(() => {
             if (featureRef.current) {
-                featureRef.current.scrollIntoView({behavior: 'smooth'})
+                featureRef.current.scrollIntoView({ behavior: 'smooth' })
             }
-        },0)
+        }, 0)
 
-        
+
     }
 
     const handleReviewsButtonClick = () => {
@@ -86,33 +89,33 @@ export const Modal = ({ adId }) => {
 
         setTimeout(() => {
             if (reviewsRef.current) {
-                reviewsRef.current.scrollIntoView({behavior: 'smooth'})
+                reviewsRef.current.scrollIntoView({ behavior: 'smooth' })
             }
-        },0)
+        }, 0)
     }
 
-   
-    
+
+
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
             <Content>
-                
+
                 <ButtonClose onClick={handleClose}><IconContext.Provider value={{ size: "32px" }}><IoCloseSharp />
                 </IconContext.Provider></ButtonClose>
                 {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                     <span className="loader"></span>
                 </div>}
                 {error && <p>Error: {error}</p>}
-                {details && <DetailsElement details={details} />}
-                
+                <DetailsElement details={item} />
+
                 <ButtonContainer>
                     <ButtonFeaterReviews $isActive={isVisibleFeature} onClick={handleFeaterButtonClick}>Features</ButtonFeaterReviews>
                     <ButtonFeaterReviews $isActive={isVisibleReviews} onClick={handleReviewsButtonClick}>Reviews</ButtonFeaterReviews>
                 </ButtonContainer>
-            
-                {isVisibleFeature && <div ref={featureRef}><FeatureElement reviews={details} /></div>}
-                {isVisibleReviews && <div ref={reviewsRef}><ReviewElement  reviews={details?.reviews || []} /></div>}
-                
+
+                {isVisibleFeature && <div ref={featureRef}><FeatureElement  details={item} /></div>}
+                {isVisibleReviews && <div ref={reviewsRef}><ReviewElement reviews={item?.reviews || []} /></div>}
+
             </Content>
         </BackDrop>
     );

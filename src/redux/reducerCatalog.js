@@ -34,7 +34,6 @@ export const catalogSlice = createSlice({
     isLoading: false,
     error: null,
     currentPage: 1,
-    
   },
   reducers: {},
   extraReducers: builder => {
@@ -51,10 +50,8 @@ export const catalogSlice = createSlice({
         }
 
         state.currentPage = action.meta.arg;
-      
       })
       .addCase(fetchCatalogApi.rejected, handleRejected);
-    
   },
 });
 

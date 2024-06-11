@@ -7,13 +7,11 @@ import { selectDetails } from "helpers/selectors";
 
 
 
-
-
-
 export const DetailsElement = ({ details }) => {
+    
 
     const { showReviews } = useSelector(selectDetails);
-    
+
 
     return (
         <div>
