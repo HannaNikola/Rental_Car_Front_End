@@ -26,13 +26,12 @@ export const Catalog = () => {
         event.preventDefault();
 
         if (items.length < currentPage * 4) {
-            // setShowMore(false)
+            // setShowMore(false);
+            
         } else {
             dispatch(fetchCatalogApi(currentPage + 1));
-            
         }
     };
-
 
     const handleModalOpen = (id) => {
         setDetailsId(id);

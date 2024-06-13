@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducerModal";
 import { useEffect, useCallback, useState, useRef } from "react";
-import { BackDrop, Content, ButtonClose, ButtonContainer, ButtonFeaterReviews} from "./Modal.styled";
+import { BackDrop, Content,Wrapper, ButtonContainer, ButtonFeaterReviews} from "./Modal.styled";
 import { selectIsModalOpen } from "helpers/selectors";
 import { DetailsElement } from "../ModalDetails/DetailsElement ";
-import { IoCloseSharp } from "react-icons/io5";
 import { FeatureElement } from '../FeatureElement/FeatureElement';
 import { ReviewElement } from '../Review/Review';
-import { IconContext } from 'react-icons';
 import '../../loader.css';
 import { selectAdverts } from "helpers/selectors";
+import { HeadModalBar } from '../HeadModalBar/HeadModalBar';
 
 
 
 export const Modal = ({ adId }) => {
     const dispatch = useDispatch();
-    const { isLoading, error} = useSelector(selectAdverts);
+    const { isLoading, error } = useSelector(selectAdverts);
     const item = useSelector(state => state.adverts.items.find(item => item._id === adId));
     const isModalOpen = useSelector(selectIsModalOpen);
 
@@ -98,10 +97,10 @@ export const Modal = ({ adId }) => {
 
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
+            
             <Content>
-
-                <ButtonClose onClick={handleClose}><IconContext.Provider value={{ size: "32px" }}><IoCloseSharp />
-                </IconContext.Provider></ButtonClose>
+                <HeadModalBar details={item} onClose={handleClose} />
+                <Wrapper>
                 {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                     <span className="loader"></span>
                 </div>}
@@ -113,10 +112,11 @@ export const Modal = ({ adId }) => {
                     <ButtonFeaterReviews $isActive={isVisibleReviews} onClick={handleReviewsButtonClick}>Reviews</ButtonFeaterReviews>
                 </ButtonContainer>
 
-                {isVisibleFeature && <div ref={featureRef}><FeatureElement  details={item} /></div>}
+                {isVisibleFeature && <div ref={featureRef}><FeatureElement details={item} /></div>}
                 {isVisibleReviews && <div ref={reviewsRef}><ReviewElement reviews={item?.reviews || []} /></div>}
-
-            </Content>
+                </Wrapper>
+                </Content>
+            
         </BackDrop>
     );
 };

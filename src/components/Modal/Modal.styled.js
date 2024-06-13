@@ -10,10 +10,14 @@ export const BackDrop = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(17, 18, 19, 0.4);
+  
 `;
+
 export const Content = styled.div`
+  box-sizing: border-box;
   background: #fff;
   padding: 40px;
+
   border-radius: 20px;
   flex-direction: column;
   align-items: flex-end;
@@ -21,17 +25,12 @@ export const Content = styled.div`
   width: 902px;
   max-height: 80vh;
   overflow-y: auto;
-  position: relative;
+  overflow: auto;
 `;
-export const ButtonClose = styled.button`
-   cursor:pointer;
-   position: absolute;
-   top: 40px;
-   right: 40px;
-   background: none;
-   border: none;
-   
- `;
+export const Wrapper = styled.div`
+  overflow: hidden; 
+  
+`;
 
  export const ButtonContainer = styled.div`
    display: flex;
