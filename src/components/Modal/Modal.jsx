@@ -97,10 +97,9 @@ export const Modal = ({ adId }) => {
 
     return (
         <BackDrop data-backdrop="true" onClick={handleBackdropClick}>
-            
+            <Wrapper>
             <Content>
                 <HeadModalBar details={item} onClose={handleClose} />
-                <Wrapper>
                 {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
                     <span className="loader"></span>
                 </div>}
@@ -114,9 +113,8 @@ export const Modal = ({ adId }) => {
 
                 {isVisibleFeature && <div ref={featureRef}><FeatureElement details={item} /></div>}
                 {isVisibleReviews && <div ref={reviewsRef}><ReviewElement reviews={item?.reviews || []} /></div>}
-                </Wrapper>
                 </Content>
-            
+            </Wrapper >
         </BackDrop>
     );
 };

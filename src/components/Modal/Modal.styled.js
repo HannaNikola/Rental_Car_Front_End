@@ -14,21 +14,25 @@ export const BackDrop = styled.div`
 `;
 
 export const Content = styled.div`
-  box-sizing: border-box;
   background: #fff;
-  padding: 40px;
-
-  border-radius: 20px;
   flex-direction: column;
   align-items: flex-end;
-  min-height: 720px;
-  width: 902px;
   max-height: 80vh;
   overflow-y: auto;
   overflow: auto;
+  
 `;
 export const Wrapper = styled.div`
-  overflow: hidden; 
+  box-sizing: border-box;
+  padding: 40px;
+  overflow: hidden;
+  background: #fff;
+  background: #fff;
+  border-radius: 20px;
+  min-height: 720px;
+  width: 902px;
+  max-height: 80vh;
+  overflow: auto;
   
 `;
 

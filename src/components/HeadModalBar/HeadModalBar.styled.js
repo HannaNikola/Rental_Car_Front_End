@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const HeadBar = styled.div`
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 5;
-  padding-bottom: 24px;
   
+  position: sticky;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  padding-bottom: 24px;
 `;
 
 export const ButtonClose = styled.button`
