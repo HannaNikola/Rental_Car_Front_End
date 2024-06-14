@@ -31,7 +31,7 @@ export const FavoriteButton = ({ adId }) => {
 
             <HeartButton onClick={handleFavorites} >
                 <IconContext.Provider value={{ size: "24px" }}>
-                    <FaHeart style={{
+                    <FaHeart className="svg-icon" style={{
                         fill: isFavorite ? '#E44848' : '#ffffff',
                         stroke: isFavorite ? 'none' : '#101828',
                         strokeWidth: isFavorite ? '0' : '20px',
