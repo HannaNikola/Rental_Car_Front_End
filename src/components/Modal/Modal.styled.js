@@ -15,25 +15,24 @@ export const BackDrop = styled.div`
 
 export const Content = styled.div`
   background: #fff;
-  flex-direction: column;
-  align-items: flex-end;
-  max-height: 80vh;
+  flex: 1;
   overflow-y: auto;
-  overflow: auto;
-  
+  padding-right: 20px; 
+  box-sizing: content-box;
 `;
 export const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 40px;
+  padding: 40px 20px 40px 40px;
   overflow: hidden;
-  background: #fff;
   background: #fff;
   border-radius: 20px;
   min-height: 720px;
-  width: 902px;
+  width: 982px;
   max-height: 80vh;
-  overflow: auto;
-  
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
  export const ButtonContainer = styled.div`
@@ -56,3 +55,4 @@ export const ButtonFeaterReviews = styled.button`
     color: red;
   `}
 `;
+

@@ -8,7 +8,7 @@ export const BoxFormic = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 400px;
-  padding: 24px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid rgba(16, 24, 40, 0.2);
 `;
@@ -35,7 +35,7 @@ export const InputField = styled(Field)`
 `;
 
 export const MessageInput = styled(Field)`
-display: grid;
+
   font-size: 16px;
   text-align: start;
 

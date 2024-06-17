@@ -25,18 +25,19 @@ body {
 
   ::-webkit-scrollbar {
   width: 8px; 
-  height: 10px; 
-}
+   height: 10px; 
+ }
 
 
-::-webkit-scrollbar-thumb:hover {
-  background: #D9D9D9; 
-  border-radius: 7px;
-  position: absolute;
-  left: 46px;
-  top: 174px;
-  margin-right: 30px;
-}
+ ::-webkit-scrollbar-thumb:hover {
+
+   background: #D9D9D9; 
+   border-radius: 7px;
+   position: absolute;
+   left: 46px;
+   top: 174px;
+   margin-right: 30px;
+ }
 
 }
 
@@ -76,5 +77,5 @@ a {
 .active{
   color:red;
 }
-`
+`;
 

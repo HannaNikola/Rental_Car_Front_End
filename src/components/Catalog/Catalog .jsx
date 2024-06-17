@@ -22,7 +22,7 @@ export const Catalog = () => {
     }, [dispatch]);
 
 
-    const loadMore = (event) => {
+    const loadMore = () => {
         
             dispatch(fetchCatalogApi(currentPage + 1));
     };
@@ -33,7 +33,7 @@ export const Catalog = () => {
         dispatch(openModal());
     };
 
-    console.log(showMore);
+    
     return (
         <div>
             {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>

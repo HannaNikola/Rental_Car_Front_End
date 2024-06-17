@@ -8,7 +8,7 @@ export const HeadBar = styled.div`
   left: 0;
   width: 100%;
   background-color: white;
-  z-index: 10;
+  z-index: 1;
   padding-bottom: 24px;
 `;
 
