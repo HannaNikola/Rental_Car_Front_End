@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaHeart } from 'react-icons/fa6';
 
 
 export const HeartButton = styled.button`
@@ -8,8 +9,18 @@ export const HeartButton = styled.button`
   border: none;
   background-color: #fff;
 
-  &:hover .svg-icon,
-  &:focus .svg-icon {
+
+`;
+
+export const StyledIcon = styled(FaHeart)`
+  width: 24px;
+  height: 24px;
+  fill: ${props => (props.$status ? '#E44848' : '#ffffff')};
+  stroke: ${props => (props.$status ? 'none' : '#101828')};
+  stroke-width: ${props => (props.$status ? '0' : '20px')};
+
+  &:hover,
+  &:focus {
     stroke: #e44848;
     fill: #e44848;
     transform: scale(1.1);
@@ -17,16 +28,4 @@ export const HeartButton = styled.button`
       fill 0.3s ease,
       transform 0.3s ease;
   }
-
-  // .icon {
-  //   display: inline-block;
-  //   width: 1em;
-  //   height: 1em;
-  //   stroke-width: 0;
-  //   stroke: currentColor;
-  //   fill: currentColor;
-  // }
-  // .icon-heart {
-  //   width: 1.0419921875em;
-  // }
 `;

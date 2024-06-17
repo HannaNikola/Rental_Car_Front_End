@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { HeartButton } from "./FavoriteButton.styled";
+import { HeartButton, StyledIcon } from "./FavoriteButton.styled";
 import { deleteFavorite, addFavorite } from "../../redux/reducerFavorites";
-import { FaHeart } from "react-icons/fa6";
-import { IconContext } from 'react-icons';
+
 
 
 
@@ -14,6 +13,7 @@ export const FavoriteButton = ({ adId }) => {
     
     
     const isFavorite = favorites.includes(adId);
+    
 
     const handleFavorites = (event) => {
         event.preventDefault();
@@ -27,17 +27,9 @@ export const FavoriteButton = ({ adId }) => {
     return (
         <div>
             
- {/* <svg className="icon icon-heart"><use xlinkHref="../../images/svg.svg"></use></svg> */}
-
             <HeartButton onClick={handleFavorites} >
-                <IconContext.Provider value={{ size: "24px" }}>
-                    <FaHeart className="svg-icon" style={{
-                        fill: isFavorite ? '#E44848' : '#ffffff',
-                        stroke: isFavorite ? 'none' : '#101828',
-                        strokeWidth: isFavorite ? '0' : '20px',
-                       
-                    }} />
-                </IconContext.Provider>
+                <StyledIcon  $status={isFavorite} />
+                
             </HeartButton>
         </div>
     );

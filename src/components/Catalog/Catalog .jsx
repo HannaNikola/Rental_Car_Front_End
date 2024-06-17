@@ -12,9 +12,9 @@ import '../../loader.css';
         
 export const Catalog = () => {
     const dispatch = useDispatch();
-    const { isLoading, error, items, currentPage } = useSelector(selectAdverts);
+    const { isLoading, error, items, currentPage, showMore } = useSelector(selectAdverts);
     const [detailsId, setDetailsId] = useState(null);
-    // const [showMore, setShowMore] = useState(true);
+   
 
 
     useEffect(() => {
@@ -23,14 +23,8 @@ export const Catalog = () => {
 
 
     const loadMore = (event) => {
-        event.preventDefault();
-
-        if (items.length < currentPage * 4) {
-            // setShowMore(false);
-            
-        } else {
+        
             dispatch(fetchCatalogApi(currentPage + 1));
-        }
     };
 
     const handleModalOpen = (id) => {
@@ -39,7 +33,7 @@ export const Catalog = () => {
         dispatch(openModal());
     };
 
-    
+    console.log(showMore);
     return (
         <div>
             {isLoading && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
@@ -51,10 +45,9 @@ export const Catalog = () => {
                     <Card key={item._id} item={item} onShowMore={handleModalOpen} />
                 ))}
             </Box>
-            
-                <ButtonLoadMore onClick={loadMore} disabled={isLoading}>
-                    Load more
-                </ButtonLoadMore>
+            {showMore && <ButtonLoadMore onClick={loadMore} disabled={isLoading}>
+                Load more
+            </ButtonLoadMore>}
             {detailsId && <Modal adId={detailsId} />}
         </div>
     );

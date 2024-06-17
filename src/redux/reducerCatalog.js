@@ -19,7 +19,7 @@ export const fetchCatalogApi = createAsyncThunk(
           page: page,
         },
       });
-     
+    //  console.log(response.data)
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,6 +34,7 @@ export const catalogSlice = createSlice({
     isLoading: false,
     error: null,
     currentPage: 1,
+    showMore: true,
   },
   reducers: {},
   extraReducers: builder => {
@@ -42,6 +43,9 @@ export const catalogSlice = createSlice({
       .addCase(fetchCatalogApi.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        if (action.payload.length === 0) {
+          state.showMore= false
+        }
 
         if (action.meta.arg === 1) {
           state.items = action.payload;
